@@ -47,5 +47,11 @@ public class MotorGroup {
     public double getPower() {
         return Leader.getPower();
     }
+    public void resetEncoders() {
+        Leader.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        Follower.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        Leader.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        Follower.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+    }
 
 }

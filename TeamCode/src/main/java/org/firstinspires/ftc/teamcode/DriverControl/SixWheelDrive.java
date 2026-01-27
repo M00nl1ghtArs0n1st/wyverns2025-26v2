@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 //Made by Finch (Will)
 
 @TeleOp
-public class SixWheelDrive extends OpMode{
+public class SixWheelDrive extends OpMode {
     Drivetrain drivetrain;
     boolean usingTankDrive = false; //easy switch between tank drive and arcade drive
     //tank drive: left_stick_y is used for forward and back for the left side, same for right_stick_y and right side
