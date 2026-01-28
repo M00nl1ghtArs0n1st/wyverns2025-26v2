@@ -4,21 +4,21 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Commands.SixWheelCMD;
+import org.firstinspires.ftc.teamcode.Commands.ToolsCMD;
 
 @Autonomous
 public class SixWheelAutoTest extends LinearOpMode {
     SixWheelCMD cmd;
+    ToolsCMD CMD;
 
     @Override
     public void runOpMode() throws InterruptedException {
         waitForStart();
-        cmd.driveBasic(0.5, 0.5, 1000); //both sides are moving forward: move forward
-        sleep(1000); //sleep makes the program pause whatever its doing for the specified milliseconds
-        cmd.driveBasic(-0.5, -0.5, 1000); //both sides are moving backward: move backward
-        sleep(1000); //1000 milliseconds : 1 second
-        //both sides are moving in a different way: turn
-        cmd.driveBasic(-0.75, 0.75, 1000); //left side is going backward: turn left (counterclockwise)
-        sleep(1000);
-        cmd.driveBasic(0.75, -0.75, 1000); //right side is going backward: turn right (clockwise)
+//        robot.limelight.setPollRateHz(100); // This sets how often we ask Limelight for data (100 times per second)
+//        robot.limelight.start();
+        waitForStart();
+        cmd.moveWithEncoders(500);
+        cmd.turnByAngle(-45);
+        //CMD.shootArtifacts(3);
     }
 }
