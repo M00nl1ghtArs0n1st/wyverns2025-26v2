@@ -21,7 +21,7 @@ package org.firstinspires.ftc.teamcode;
  * <pre><code>
  * turretSubsystem = new TurretSubsystem(hardwareMap, alliance);
  * </code></pre>
- * I pass in my alliance to my subsytems<br><br>
+ * I pass in my alliance to my subsystems<br><br>
  * Make sure to configure your master file so that it you can pass in alliance:
  * <pre><code>
  *     public TeleOp(Alliance alliance) {

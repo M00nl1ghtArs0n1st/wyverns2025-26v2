@@ -7,13 +7,15 @@ import org.firstinspires.ftc.teamcode.Commands.SixWheelCMD;
 public class ToolsCMD {
     Tools tools;
     SixWheelCMD cmd;
-    public void shootArtifacts(long amountOfArtifacts) throws InterruptedException {
-//         LLResult result = robot.limelight.getLatestResult();
+    public void startFlywheel(double targetRPM) {
         double CPR =28; //Counts per revolution
         double driveGearReduction = 1;
         double CPW = CPR * driveGearReduction; // counts per wheel
-        double targetRPM = 2000;
         double TPS = (targetRPM/ 60) * CPW;
+        tools.flywheelMotor.setVelocity(TPS);
+    }
+    public void shootArtifacts(long startTime) throws InterruptedException {
+//         LLResult result = robot.limelight.getLatestResult();
 //         double tx = result.getTx();
 //         double ty = result.getTy();
 //         double ta = result.getTa();
@@ -43,19 +45,22 @@ public class ToolsCMD {
 //             }
 //         }
         cmd.setMotors(0,0);
-        tools.flywheelMotor.setVelocity(TPS);
-        sleep(3000); //flywheel get to speed
+        sleep(startTime); //flywheel get to speed
+        tools.intakeMotor.setPower(-.25);
         tools.flywheelServo.setPower(.5);
         sleep(3000); //wait for shooting to happen loser
+        tools.intakeMotor.setPower(0);
+        sleep(2000);
         tools.flywheelServo.setPower(0);
-        amountOfArtifacts = amountOfArtifacts - 1;
-        while (amountOfArtifacts != 0) {
-            sleep(1000);
-            tools.flywheelServo.setPower(.5);
-            sleep(3000);
-            tools.flywheelServo.setPower(0);
-            amountOfArtifacts = amountOfArtifacts - 1;
-        }
+        sleep(500);
+        tools.intakeMotor.setPower(.25);
+        sleep(500);
+        tools.flywheelServo.setPower(.5);
+        sleep(2500);
+        tools.intakeMotor.setPower(-.25);
+        sleep(2000);
+        tools.intakeMotor.setPower(0);
+        tools.flywheelServo.setPower(0);
         tools.flywheelMotor.setVelocity(0);
     }
 }
