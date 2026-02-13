@@ -26,12 +26,5 @@ public class Drivetrain {
         rightSide.resetEncoders();
     }
 
-    public void arcadeDrive(double forward, double turn) {
-        leftSide.setPower(forward - turn);
-        rightSide.setPower(forward + turn);
-    }
-    public void tankDrive(double left, double right) {
-        leftSide.setPower(left);
-        rightSide.setPower(right);
-    }
+
 }

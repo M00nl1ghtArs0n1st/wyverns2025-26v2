@@ -1,12 +1,25 @@
 package org.firstinspires.ftc.teamcode.Commands;
 
 import static java.lang.Thread.sleep;
+
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.Subsystems.Imu;
 import org.firstinspires.ftc.teamcode.Subsystems.Tools;
 import org.firstinspires.ftc.teamcode.Commands.SixWheelCMD;
 
 public class ToolsCMD {
     Tools tools;
     SixWheelCMD cmd;
+    Drivetrain drivetrain;
+    Imu imu;
+    public ToolsCMD(HardwareMap hMap) {
+        drivetrain = new Drivetrain(hMap);
+        tools = new Tools(hMap);
+        imu = new Imu(hMap);
+        cmd = new SixWheelCMD(hMap);
+    }
     public void startFlywheel(double targetRPM) {
         double CPR =28; //Counts per revolution
         double driveGearReduction = 1;

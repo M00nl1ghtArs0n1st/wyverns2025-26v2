@@ -3,7 +3,9 @@ package org.firstinspires.ftc.teamcode.DriverControl;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.Subsystems.Imu;
 import org.firstinspires.ftc.teamcode.Subsystems.Tools;
+import org.firstinspires.ftc.teamcode.Commands.SixWheelCMD;
 
 //Made by Finch (Will)
 
@@ -11,6 +13,8 @@ import org.firstinspires.ftc.teamcode.Subsystems.Tools;
 public class SixWheelDrive extends OpMode {
     Drivetrain drivetrain;
     Tools tools;
+    Imu imu;
+    SixWheelCMD cmd;
     boolean usingTankDrive = false; //easy switch between tank drive and arcade drive
     //tank drive: left_stick_y is used for forward and back for the left side, same for right_stick_y and right side
     //arcade drive: left_stick_y is used for forward and back for both sides, right_stick_x is used for turning
@@ -18,12 +22,11 @@ public class SixWheelDrive extends OpMode {
     public void init() { // called once when INIT is pressed
         //hardware mapping from driver hub
         drivetrain = new Drivetrain(hardwareMap);
+        tools = new Tools(hardwareMap);
+        imu = new Imu(hardwareMap);
 
         telemetry.addData("Status", "Initialized"); // Displays this on Driver Station
         telemetry.update(); // updates the telemetry on the screen
-        double CPR =28; //Counts per revolution
-        double driveGearReduction = 1;
-        double CPW = CPR * driveGearReduction; // counts per wheel
     }
 
     public void start() {} // called once after ▶ is pressed
@@ -71,7 +74,7 @@ public class SixWheelDrive extends OpMode {
         }
 
 
-        drivetrain.arcadeDrive(leftJoyY,rightJoyX);
+        cmd.arcadeDrive(leftJoyY,rightJoyX);
         // Left joystick Y axis -> drive straight
         // Right joystick X axis -> turn
 

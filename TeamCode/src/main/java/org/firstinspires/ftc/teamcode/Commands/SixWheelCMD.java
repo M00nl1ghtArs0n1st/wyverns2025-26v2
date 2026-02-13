@@ -5,10 +5,22 @@ import static java.lang.Thread.sleep;
 import org.firstinspires.ftc.teamcode.Alliance;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.Subsystems.Imu;
+import org.firstinspires.ftc.teamcode.Subsystems.Tools;
+
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 public class SixWheelCMD {
 
+
     Drivetrain drivetrain;
+    Tools tools;
     Imu imu;
+    public SixWheelCMD(HardwareMap hMap) {
+        drivetrain = new Drivetrain(hMap);
+        tools = new Tools(hMap);
+        imu = new Imu(hMap);
+    }
+
     public void driveBasic(double left, double right, long time) throws InterruptedException {
         //set all motor powers
         setMotors(left,right);
@@ -73,5 +85,14 @@ public class SixWheelCMD {
             } //waits for the robot to turn to the specified angle
         }
         setMotors(0,0); //stops robot after it has turned
+    }
+
+    public void arcadeDrive(double forward, double turn) {
+        drivetrain.leftSide.setPower(forward - turn);
+        drivetrain.rightSide.setPower(forward + turn);
+    }
+    public void tankDrive(double left, double right) {
+        drivetrain.leftSide.setPower(left);
+        drivetrain.rightSide.setPower(right);
     }
 }
