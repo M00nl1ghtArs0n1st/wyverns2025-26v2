@@ -14,11 +14,11 @@ public class ToolsCMD {
     SixWheelCMD cmd;
     Drivetrain drivetrain;
     Imu imu;
-    public ToolsCMD(HardwareMap hMap) {
-        drivetrain = new Drivetrain(hMap);
-        tools = new Tools(hMap);
-        imu = new Imu(hMap);
-        cmd = new SixWheelCMD(hMap);
+    public ToolsCMD(Drivetrain drivetrain, Imu imu, Tools tools, SixWheelCMD cmd) {
+        this.drivetrain = drivetrain;
+        this.imu = imu;
+        this.tools = tools;
+        this.cmd = cmd;
     }
     public void startFlywheel(double targetRPM) {
         double CPR =28; //Counts per revolution

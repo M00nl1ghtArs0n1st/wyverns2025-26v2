@@ -24,6 +24,7 @@ public class SixWheelDrive extends OpMode {
         drivetrain = new Drivetrain(hardwareMap);
         tools = new Tools(hardwareMap);
         imu = new Imu(hardwareMap);
+        cmd = new SixWheelCMD(drivetrain, imu);
 
         telemetry.addData("Status", "Initialized"); // Displays this on Driver Station
         telemetry.update(); // updates the telemetry on the screen

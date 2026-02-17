@@ -24,6 +24,8 @@ public class FarAutoRed extends LinearOpMode {
         drivetrain = new Drivetrain(hardwareMap);
         tools = new Tools(hardwareMap);
         imu = new Imu(hardwareMap);
+        cmd = new SixWheelCMD(drivetrain, imu);
+        CMD = new ToolsCMD(drivetrain, imu, tools, cmd);
 
         waitForStart();
         CMD.startFlywheel(2500);

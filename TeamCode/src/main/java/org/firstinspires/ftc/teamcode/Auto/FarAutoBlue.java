@@ -14,14 +14,19 @@ import org.firstinspires.ftc.teamcode.Subsystems.Tools;
 public class FarAutoBlue extends LinearOpMode {
     SixWheelCMD cmd;
     ToolsCMD CMD;
-
+    Drivetrain drivetrain;
+    Tools tools;
+    Imu imu;
 
     @Override
     public void runOpMode() throws InterruptedException {
         //        robot.limelight.setPollRateHz(100); // This sets how often we ask Limelight for data (100 times per second)
 //        robot.limelight.start();
-        cmd = new SixWheelCMD(hardwareMap);
-        CMD = new ToolsCMD(hardwareMap);
+        drivetrain = new Drivetrain(hardwareMap);
+        tools = new Tools(hardwareMap);
+        imu = new Imu(hardwareMap);
+        cmd = new SixWheelCMD(drivetrain, imu);
+        CMD = new ToolsCMD(drivetrain, imu, tools, cmd);
         waitForStart();
         CMD.startFlywheel(2500);
         cmd.moveWithEncoders(1650);

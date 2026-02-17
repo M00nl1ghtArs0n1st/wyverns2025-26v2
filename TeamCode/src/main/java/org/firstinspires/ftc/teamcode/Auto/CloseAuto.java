@@ -23,6 +23,8 @@ public class CloseAuto extends LinearOpMode {
         drivetrain = new Drivetrain(hardwareMap);
         tools = new Tools(hardwareMap);
         imu = new Imu(hardwareMap);
+        cmd = new SixWheelCMD(drivetrain, imu);
+        CMD = new ToolsCMD(drivetrain, imu, tools, cmd);
         waitForStart();
 //        robot.limelight.setPollRateHz(100); // This sets how often we ask Limelight for data (100 times per second)
 //        robot.limelight.start();

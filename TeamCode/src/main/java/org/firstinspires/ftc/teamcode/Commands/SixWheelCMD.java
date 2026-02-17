@@ -13,12 +13,10 @@ public class SixWheelCMD {
 
 
     Drivetrain drivetrain;
-    Tools tools;
     Imu imu;
-    public SixWheelCMD(HardwareMap hMap) {
-        drivetrain = new Drivetrain(hMap);
-        tools = new Tools(hMap);
-        imu = new Imu(hMap);
+    public SixWheelCMD(Drivetrain drivetrain, Imu imu) {
+        this.drivetrain = drivetrain;
+        this.imu = imu;
     }
 
     public void driveBasic(double left, double right, long time) throws InterruptedException {
