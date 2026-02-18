@@ -52,6 +52,7 @@ public class SixWheelDrive extends OpMode {
         double TPSClose = (targetRPMClose/ 60) * CPW;
         //this seems useless, but if you need to reverse a control, you can just add "-" before the reference
         boolean threeProngStart = gamepad2.b;
+        boolean threeProngBack = gamepad2.a;
         boolean intakeForward = gamepad2.right_bumper;
         boolean intakeBackward = gamepad2.left_bumper;
         if (intakeForward) {

@@ -19,6 +19,6 @@ public class Imu {
         imu.initialize(parameters);
     }
     public double getRobotHeading() {
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 }

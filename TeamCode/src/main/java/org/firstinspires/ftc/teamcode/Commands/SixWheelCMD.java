@@ -41,11 +41,11 @@ public class SixWheelCMD {
         if (position > 0) {
             setMotors(.35, .35);//CHANGE BACK TO .35
             while (currentPos < position - 100) {
-                currentPos = -drivetrain.backLeft.getCurrentPosition();
+                currentPos = -drivetrain.frontRight.getCurrentPosition();
             }
             setMotors(.25, .25);//CHANGE BACK TO .25
             while (currentPos < position - 50) {
-                currentPos = -drivetrain.backLeft.getCurrentPosition();
+                currentPos = -drivetrain.frontRight.getCurrentPosition();
             }
         } else {
             setMotors(-.35, -.35); //CHANGE BACK TO .4
@@ -62,32 +62,38 @@ public class SixWheelCMD {
     public void turnByAngle(double angle) {
         drivetrain.leftSide.resetEncoders();
         drivetrain.rightSide.resetEncoders();
-        double heading = -imu.getRobotHeading();
+        imu.imu.resetYaw();
+        //finds how far the robot needs to go
+        double currentAngle = -imu.getRobotHeading();
         if (angle < 0) {
-            setMotors(-.375, .375); //sets initial motor powers
-            while (heading > angle + 30) {
-                heading = -imu.getRobotHeading();
+            setMotors(-.25, .25); //sets initial motor powers
+            while (currentAngle > angle + 30) {
+                //empty like my soul
+                currentAngle = -imu.getRobotHeading();
             }//waits until the robot only needs to turn 30 more degrees
-            setMotors(-.25, .25); //robot slows down to be more accurate
-            while (heading > angle + 15) {
-                heading = -imu.getRobotHeading();
+            setMotors(-.15, .15); //robot slows down to be more accurate
+            while (currentAngle >  angle + 5) {
+                //EMPTY ON PURPOSE LOSER
+                currentAngle = -imu.getRobotHeading();;
             }// waits for the robot to turn all the way
         } else {
-            setMotors(.375, -.375);// sets initial motor powers
-            while (heading < angle -30) {
-                heading = -imu.getRobotHeading();
+            setMotors(.25, -.25);// sets initial motor powers
+            while (currentAngle <  angle -30) {
+                currentAngle = -imu.getRobotHeading();
+                //do I have to say it again?
             } //waits until the robot only has to turn 30 more degrees
-            setMotors(.25, -.25); //robot slows to be more accurate
-            while (heading < angle - 15) {
-                heading = -imu.getRobotHeading();
+            setMotors(.15, -.15); //robot slows to be more accurate
+            while (currentAngle < angle - 5) {
+                currentAngle = -imu.getRobotHeading();
+                //EMPTY ON PURPOSE EVEN WORSE LOSER
             } //waits for the robot to turn to the specified angle
         }
         setMotors(0,0); //stops robot after it has turned
     }
 
     public void arcadeDrive(double forward, double turn) {
-        drivetrain.leftSide.setPower(forward - turn);
-        drivetrain.rightSide.setPower(forward + turn);
+        drivetrain.leftSide.setPower(forward + turn);
+        drivetrain.rightSide.setPower(forward - turn);
     }
     public void tankDrive(double left, double right) {
         drivetrain.leftSide.setPower(left);
