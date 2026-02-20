@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Imu;
 import org.firstinspires.ftc.teamcode.Subsystems.Tools;
 
 @Autonomous
-public class CloseAuto extends LinearOpMode {
+public class CloseAutoBlue extends LinearOpMode {
     SixWheelCMD cmd;
     ToolsCMD CMD;
     Drivetrain drivetrain;
@@ -32,5 +32,7 @@ public class CloseAuto extends LinearOpMode {
         CMD.startFlywheel(2500);
         cmd.moveWithEncoders(-780);
         CMD.shootArtifacts(5000); //test how long itll take for flywheel to get to speed!!
+        cmd.turnByAngle(-45);
+        cmd.moveWithEncoders(200);
     }
 }

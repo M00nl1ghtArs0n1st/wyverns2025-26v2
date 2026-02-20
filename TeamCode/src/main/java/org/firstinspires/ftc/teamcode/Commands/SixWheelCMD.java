@@ -72,18 +72,18 @@ public class SixWheelCMD {
                 currentAngle = -imu.getRobotHeading();
             }//waits until the robot only needs to turn 30 more degrees
             setMotors(-.15, .15); //robot slows down to be more accurate
-            while (currentAngle >  angle + 5) {
+            while (currentAngle >  angle + 3) {
                 //EMPTY ON PURPOSE LOSER
                 currentAngle = -imu.getRobotHeading();;
             }// waits for the robot to turn all the way
-        } else {
+        } else if (angle >= 0){
             setMotors(.25, -.25);// sets initial motor powers
-            while (currentAngle <  angle -30) {
+            while (currentAngle < angle -30) {
                 currentAngle = -imu.getRobotHeading();
                 //do I have to say it again?
             } //waits until the robot only has to turn 30 more degrees
             setMotors(.15, -.15); //robot slows to be more accurate
-            while (currentAngle < angle - 5) {
+            while (currentAngle < angle - 3) {
                 currentAngle = -imu.getRobotHeading();
                 //EMPTY ON PURPOSE EVEN WORSE LOSER
             } //waits for the robot to turn to the specified angle
@@ -94,9 +94,5 @@ public class SixWheelCMD {
     public void arcadeDrive(double forward, double turn) {
         drivetrain.leftSide.setPower(forward + turn);
         drivetrain.rightSide.setPower(forward - turn);
-    }
-    public void tankDrive(double left, double right) {
-        drivetrain.leftSide.setPower(left);
-        drivetrain.rightSide.setPower(right);
     }
 }
