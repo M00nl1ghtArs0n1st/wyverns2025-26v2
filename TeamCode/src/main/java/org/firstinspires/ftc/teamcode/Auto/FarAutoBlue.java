@@ -35,6 +35,6 @@ public class FarAutoBlue extends LinearOpMode {
         sleep(500);
         CMD.shootArtifacts(2000);
         cmd.turnByAngle(-43);
-        cmd.moveWithEncoders(200);
+        cmd.moveWithEncoders(380);
     }
 }

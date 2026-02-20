@@ -33,6 +33,6 @@ public class CloseAutoBlue extends LinearOpMode {
         cmd.moveWithEncoders(-780);
         CMD.shootArtifacts(5000); //test how long itll take for flywheel to get to speed!!
         cmd.turnByAngle(-45);
-        cmd.moveWithEncoders(200);
+        cmd.moveWithEncoders(380);
     }
 }

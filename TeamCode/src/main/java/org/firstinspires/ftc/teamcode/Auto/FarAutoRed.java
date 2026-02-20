@@ -35,6 +35,6 @@ public class FarAutoRed extends LinearOpMode {
         sleep(500);
         CMD.shootArtifacts(2000);
         cmd.turnByAngle(43);
-        cmd.moveWithEncoders(250);
+        cmd.moveWithEncoders(380);
     }
 }
