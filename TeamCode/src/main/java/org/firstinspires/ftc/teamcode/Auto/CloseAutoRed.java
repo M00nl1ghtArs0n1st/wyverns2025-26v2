@@ -31,9 +31,10 @@ public class CloseAutoRed extends LinearOpMode {
         waitForStart();
         CMD.startFlywheel(2500);
         cmd.moveWithEncoders(-780);
+        cmd.turnByAngle(-7);
         CMD.shootArtifacts(5000); //test how long itll take for flywheel to get to speed!!
-        cmd.turnByAngle(45);
-        cmd.moveWithEncoders(380);
+        cmd.turnByAngle(55);
+        cmd.moveWithEncoders(390);
 
     }
 }

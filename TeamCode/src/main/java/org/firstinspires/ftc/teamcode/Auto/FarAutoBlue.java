@@ -29,9 +29,9 @@ public class FarAutoBlue extends LinearOpMode {
         CMD = new ToolsCMD(drivetrain, imu, tools, cmd);
         waitForStart();
         CMD.startFlywheel(2500);
-        cmd.moveWithEncoders(1650);
+        cmd.moveWithEncoders(1680);
         sleep(1000);
-        cmd.turnByAngle(-43);
+        cmd.turnByAngle(-41);
         sleep(500);
         CMD.shootArtifacts(2000);
         cmd.turnByAngle(-43);

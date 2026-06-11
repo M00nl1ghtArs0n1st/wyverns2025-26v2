@@ -39,20 +39,20 @@ public class SixWheelCMD {
         drivetrain.rightSide.resetEncoders();
         double currentPos = -drivetrain.backRight.getCurrentPosition();
         if (position > 0) {
-            setMotors(.35, .35);//CHANGE BACK TO .35
+            setMotors(.35, .27);//CHANGE BACK TO .35
             while (currentPos < position - 100) {
                 currentPos = -drivetrain.frontRight.getCurrentPosition();
             }
-            setMotors(.25, .25);//CHANGE BACK TO .25
+            setMotors(.25, .17);//CHANGE BACK TO .25
             while (currentPos < position - 50) {
                 currentPos = -drivetrain.frontRight.getCurrentPosition();
             }
         } else {
-            setMotors(-.35, -.35); //CHANGE BACK TO .4
+            setMotors(-.35, -.27); //CHANGE BACK TO .4
             while (currentPos > position + 100) {
                 currentPos = -drivetrain.backLeft.getCurrentPosition();
             }
-            setMotors(-.25, -.25);//CHANGE BACK TO .3
+            setMotors(-.25, -.17);//CHANGE BACK TO .3
             while (currentPos > position + 50) {
                 currentPos = -drivetrain.backLeft.getCurrentPosition();
             }
